@@ -4,7 +4,7 @@ Use command `` Source alias-configs/kubernetes-alias.sh`` to import all the comm
 
 
 1) Set current context to use a specific namespace 
-    
-    Command : namespace `<namespace name>` 
+
+    Command : ```namespace <namespace name>``` 
     
     If namespace name is left blank defaults to `default` namespace   
