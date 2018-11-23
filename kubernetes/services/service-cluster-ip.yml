@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cluster-ip-service
+  labels:
+    component: cluster-ip-service
+
+spec:
+  selector:
+    component: nginx-pod
+  ports:
+    - port: 80 # only port is 80 means target port is also 80(container port)

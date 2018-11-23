@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydeployment
+  labels:
+    component: liveness-readiness
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: liveness-readiness
+
+  template:
+    metadata:
+      labels:
+        component: liveness-readiness
+    spec:
+      containers:
+        - name: mynginx
+          image: nginx
+          livenessProbe:
+            httpGet:
+              port: 80
+              path: /
+            initialDelaySeconds: 20
+            periodSeconds: 5
+            failureThreshold: 2
+            successThreshold: 1
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              port: 80
+              path: /
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            failureThreshold: 2
+            successThreshold: 1
+            timeoutSeconds: 5

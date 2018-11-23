@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-port-service
+  labels:
+    component: node-port-service
+
+spec:
+  type: NodePort
+  selector:
+    component: nginx-pod
+  ports:
+    - port: 80 # only port is 80 means target port is also 80(container port)
+      nodePort: 30001 # only between 30000 to 32000 something

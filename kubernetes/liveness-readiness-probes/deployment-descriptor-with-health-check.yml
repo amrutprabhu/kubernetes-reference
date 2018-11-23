@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydeployment
+  labels:
+    component: deployment
+
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      component: front-end
+
+  template:
+    metadata:
+      labels:
+        component: front-end
+    spec:
+      containers:
+        - name: mynginx
+          image: nginx
+          livenessProbe:
+            httpGet:
+              port: 80
+              path: /
+            initialDelaySeconds: 15
+            periodSeconds: 5
+            failureThreshold: 2
+            successThreshold: 1
+            timeoutSeconds: 10
