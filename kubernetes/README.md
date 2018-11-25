@@ -19,4 +19,5 @@ Top level directory contain sample deployment and sample pod descriptors.
 
 * [ Services ](services)
 * [ Liveness  and readiness probes ](./liveness-readiness-probes/)
+* [ Secrets](secrets)
 * [ TBA](.)
