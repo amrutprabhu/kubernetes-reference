@@ -1,6 +1,4 @@
-# Liveness vs Readiness probes
-
-There is difference between readiness and liveness of a container. 
+# Difference between Liveness and Readiness probes
 
 * Liveness probe: When this probe succeeds it marks the pod it marks it ready immediately to serve requests from the 
 services. This is usually used to tell that the pod is live ie. it has got all the resources required and the pod is good 
