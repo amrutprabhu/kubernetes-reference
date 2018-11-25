@@ -1,4 +1,4 @@
-#Liveness vs Readiness probes
+# Liveness vs Readiness probes
 
 There is difference between readiness and liveness of a container. 
 
