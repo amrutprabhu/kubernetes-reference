@@ -11,12 +11,17 @@ initializing and does nto require a restart) that's where the readiness probe co
 
 When the readiness probe exceed the failure threshold, It will be marked `Not Ready` and `does not` trigger a restart.
 
-* **Note**: Success threshold does not count initial delay(both liveness and readiness). Meaning e.g:
+
+* **Note**: Success threshold does not count initial delay(both liveness and readiness).
+ 
+ e.g:
     
+   
     successThreshold: 1
-    
+        
     initialDelaySeconds: 20
-    
+        
     periodSeconds: 10
+   
     
-    Means, your pod is marked ready only after 30 secs(if the probe is successful) and not 20 secs(your initial delay)
+ Means, your pod is marked ready only after 30 secs(if the probe is successful) and not 20 secs(your initial delay)
