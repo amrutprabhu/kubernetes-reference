@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-with-lifecycle-command
+  labels:
+    component: deployment
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: nginx-pod
+
+  template:
+    metadata:
+      labels:
+        component: nginx-pod
+    spec:
+      #------------- init containers -----------------
+      initContainers:
+        - name: initializer-container
+          image: busybox
+          command: ["sh","-c", "sleep 10"]
+
+      containers:
+      - name: nginx-container
+        image: nginx

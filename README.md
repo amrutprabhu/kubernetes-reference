@@ -20,4 +20,4 @@ Top level directory contain sample deployment and sample pod descriptors.
 * [ Services ](kubernetes/services)
 * [ Liveness  and readiness probes ](kubernetes/liveness-readiness-probes/)
 * [ Secrets](kubernetes/secrets)
-* [ TBA](.)
+* [ Init container & Pod lifecycle](kubernetes/pod-lifecycle)

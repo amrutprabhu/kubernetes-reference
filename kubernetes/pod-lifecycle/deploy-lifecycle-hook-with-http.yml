@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-with-lifecycle-http-request
+  labels:
+    component: deployment
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: nginx-pod
+
+  template:
+    metadata:
+      labels:
+        component: nginx-pod
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx
+        #----------------------http lifecycle command --------
+        lifecycle:
+          postStart:
+            httpGet:
+              port: 80
+              host: <host or any service (e.g ClusterIp service)>
+              path: /
+          preStop:
+            httpGet:
+              port: 80
+              host: <host or any service (e.g ClusterIp service)>
+              path: /

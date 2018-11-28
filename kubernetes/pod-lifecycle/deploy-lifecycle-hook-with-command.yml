@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-with-lifecycle-command
+  labels:
+    component: deployment
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: nginx-pod
+
+  template:
+    metadata:
+      labels:
+        component: nginx-pod
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx
+        #----------------------lifecycle command --------
+        lifecycle:
+          postStart:
+            exec:
+              command: ["sh","-c","echo 'poststart hook'"]
+          preStop:
+            exec:
+              command: ["sh","-c","echo 'prestop hook'"]
