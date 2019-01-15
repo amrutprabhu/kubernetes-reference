@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment-with-vol-read-only
+  labels:
+    component: deployment
+
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      component: front-end-read-only
+
+  template:
+    metadata:
+      labels:
+        component: front-end-read-only
+    spec:
+      containers:
+        - name: mynginx
+          image: nginx
+          volumeMounts:
+            - mountPath: /etc/mountpoint
+              name: awsefsvolume
+      volumes:
+        - name: awsefsvolume
+          nfs:
+            readOnly: true
+            path: /
+            server: sample-efs.efs.eu-west-1.amazonaws.com

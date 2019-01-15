@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment-with-vol
+  labels:
+    component: deployment
+
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      component: front-end
+
+  template:
+    metadata:
+      labels:
+        component: front-end
+    spec:
+      containers:
+        - name: mynginx
+          image: nginx
+          volumeMounts:
+            - mountPath: /etc/mountpoint
+              name: awsefsvolume
+      volumes:
+        - name: awsefsvolume
+          nfs:
+            path: /
+            server: sample-efs.efs.eu-west-1.amazonaws.com
