@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  my-scaling-deployment
+  labels:
+    component: deployment
+
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      component: front-end
+
+  template:
+    metadata:
+      labels:
+        component: front-end
+    spec:
+      containers:
+        - name: mynginx
+          image: nginx
+          resources:
+            requests:
+              cpu: 200m

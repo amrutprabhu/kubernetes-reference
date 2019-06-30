@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+# For one pod per worker node.
+kind: DaemonSet
+metadata:
+  name: daemonset
+spec:
+  selector:
+    matchLabels:
+      component: daemon
+  template:
+    metadata:
+      name: demonpod
+      labels:
+        component: daemon
+    spec:
+      containers:
+        - name: daemon-nginx
+          image: nginx
