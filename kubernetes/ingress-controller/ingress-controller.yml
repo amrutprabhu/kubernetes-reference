@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-controller
+
+spec:
+  rules:
+    - host: amrut.com
+      http:
+        paths:
+          - backend:
+              serviceName: myservice
+              servicePort: 80
+            path: /
