@@ -1,0 +1,24 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  namespace: amrut
+  name: amrut-cron-job
+spec:
+  failedJobsHistoryLimit: 3
+  successfulJobsHistoryLimit: 2
+  schedule: "*/1 * * * *"  # runs every minute.
+  suspend: false
+  jobTemplate:
+    metadata:
+      name: cron-job-template
+    spec:
+      template:
+        metadata:
+          name: cron-job-pod-def
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: busybox-pod
+              image: busybox
+              command: ["sh","-c","sleep 30"]
+
