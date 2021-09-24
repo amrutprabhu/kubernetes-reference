@@ -21,3 +21,10 @@ Top level directory contain sample deployment and sample pod descriptors.
 * [ Liveness  and readiness probes ](kubernetes/liveness-readiness-probes/)
 * [ Secrets](kubernetes/secrets)
 * [ Init container & Pod lifecycle](kubernetes/pod-lifecycle)
+
+Kind Cluster
+---
+start the multi-node kind kuberneted cluster with the following command.
+```shell
+kind create cluster --name cluster-2 --config kind-cluster-config.yaml
+```
