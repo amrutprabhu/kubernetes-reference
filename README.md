@@ -26,5 +26,12 @@ Kind Cluster
 ---
 start the multi-node kind kuberneted cluster with the following command.
 ```shell
-kind create cluster --name cluster-2 --config kind-cluster-config.yaml
+kind create cluster --name cluster-1 --config kind-cluster-config.yaml
+```
+
+Delete kind cluster
+---
+
+```shell
+kind delete cluster --name cluster-1
 ```
